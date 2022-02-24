@@ -44,6 +44,7 @@ export default {
         backgroundColor: props.backgroundColor,
       })),
       onClick() {
+        console.log('clicked')
         emit('click');
       }
     }

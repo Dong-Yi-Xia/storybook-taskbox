@@ -1,5 +1,6 @@
 import '../src/index.css';
 
+//global parameters
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -8,4 +9,14 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  options: {
+    storySort: (a, b) =>
+      a[1].kind === b[1].kind ? 0 : a[1].id.localeCompare(b[1].id, undefined, { numeric: true }),
+  },
+  // backgrounds: {
+  //   values: [
+  //     { name: 'red', value: '#f00' },
+  //     { name: 'green', value: '#0f0' },
+  //   ],
+  // },
 };
