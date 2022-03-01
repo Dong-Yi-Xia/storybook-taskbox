@@ -15,9 +15,17 @@ export default {
         options: ['small', 'medium', 'large']
       }
     },
-    onClick: {},
-    food: {control: {type: 'radio', options: ['pizza', 'hotdog']}},
-    drink: 'pop',
+    onClick: {
+      action: 'clicked'
+    },
+    food: {
+      description: 'controlling the food',
+      control: {
+        type: 'radio',
+        options: ['pizza', 'hotdog']
+      }
+    },
+    drink: String,
   },
 
   // parameters: {
@@ -47,7 +55,14 @@ const Template = (args) => ({
     return { args };
   },
   // And then the `args` are bound to your component with `v-bind="args"`
-  template: '<my-button v-bind="args" />',
+  template: `
+    <div>
+      <my-button v-bind="args" />
+      <my-button v-bind="args" />
+      <my-button v-bind="args" />
+      <my-button v-bind="args" />
+    </div>
+  `,
 });
 
 
@@ -56,6 +71,7 @@ export const Primary = Template.bind({});
 Primary.args = {
   primary: true,
   label: 'Click Mee',
+  onClick: {handles: ['mouseover', 'click .btn'],}
 };
 // Able to rename story
 Primary.storyName = 'I am the pri2mary';
@@ -75,7 +91,8 @@ Primary.parameters = {
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  label: 'Button',
+  ...Primary.args,
+  label: 'Butto546n',
 };
 // Add a wrapper
 Secondary.decorators =  [() => ({ template: '<div style="border: 2px solid;"><story /></div>' })]
@@ -91,3 +108,14 @@ Small.args = {
   size: 'small',
   label: 'Button',
 };
+
+
+export const something = ( args ) => ({
+  components: { MyButton },
+
+  template: `<my-button label={ans} />`
+})
+
+something.args = {
+  label: 'hello'
+}
